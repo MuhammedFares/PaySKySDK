@@ -56,7 +56,7 @@
     <string name="invalid_expire_date_date">تاريخ الانتهاء غير صحيح.</string>
     <string name="egp">جنية</string>
     <string name="print">إطبع الفاتورة</string>
-    <string name="powered_paysky"->تم التطوير بواسطة باي سكاي - محمد فارس </string>
+    <string name="powered_paysky">تم التطوير بواسطة باي سكاي - محمد فارس </string>
     <string name="failed_load_merchant_data">فشل التوثيق.</string>
     <string name="cancel">الغاء</string>
     <string name="allow_light_scan">افتح فلاش الكاميرا لتصوير اسرع</string>
