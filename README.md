@@ -1,199 +1,122 @@
-## Numo Button SDK
 
-The purpose of this SDK to help programmers to use Numo payment SDK .
+## PaySky Button SDK
+
+The PaySky Button SDK allows developers to integrate PaySky's payment solution into Android apps quickly and easily.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for
-development and testing purposes.
+These instructions will help you get a copy of the project up and running locally for development and testing.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Before using the SDK, ensure you have the following tools installed:
 
 ```
-1-JDK installed on your machine with minimum version 1.7 .
-2-Android Studio
-3-Create new Android project in Android Studio to use SDK or if you have created a project before with minSdkVersion api version 17.
-4- AndroidX compatibility
+1. JDK installed on your machine (minimum version 1.7).
+2. Android Studio.
+3. Create a new Android project in Android Studio or use an existing project with minSdkVersion of 19.
+4. Ensure AndroidX compatibility.
 ```
 
 ### Installing
 
-A step by step that tell you how to get our SDK in your project.
+Follow these steps to integrate the SDK into your Android project.
 
 ```
-1- open your android project.
-2- in your project in build.gradle file in project level in allproject{} inside it you will find
-repositories{} inside it add :-
-maven { url 'https://jitpack.io' }
+1. Open your Android project.
+2. In the project-level `build.gradle` file, under `allprojects {}`, add the following repository:
+   maven { url 'https://jitpack.io' }
 
-Example:-
+Example:
 allprojects {
-	repositories {
-		maven { url 'https://jitpack.io' }
-	}
-}
-			  
-3- in your build.gradle file in app level in dependencies{} add :-    
-implementation 'com.github.payskyCompany:NUMO-PayButton-SDK-android:1.0.10'
-
-
-Example:-
-dependencies {
-      implementation 'com.github.payskyCompany:NUMO-PayButton-SDK-android:1.0.10'
-}
-
-4- Sync your project.
-
-```
-
-### Using SDK
-
-```
-in order to use our SDK you should get merchant id and Terminal id from our company.
-
-1 – create a new instance from PayButton:-  
-
-PayButton payButton = new PayButton(context);
-
-you need to just pass some parameters to PayButton class instance :-
-  1-Merchat id.
-  2-Terminal id.
-  3-Payment amount.
-  4-Currency code [Optional].
-  5-merchant secure hash.
-  6-transaction Reference Number.
-  
-Note That:-
-you shoud keep your secure hash and merchant id and terminal id with encryption 
-before save them in storage if you want.
-
-Example:-
-
-payButton.setMerchantId(merchantId); // Merchant id
-payButton.setTerminalId(terminalId); // Terminal  id
-payButton.setAmount(amount); // Amount
-payButton.setCurrencyCode(currencyCode); // Currency Code [Optional]
-payButton.setMerchantSecureHash("Merchant secure hash"); // Merchant secure hash
-payButton.setTransactionReferenceNumber("reference number"); // unique transaction reference number.
-payButton.setProductionStatus(PRODUCTION); // for testing environment use npg
-payButton.setLang(localLang);  //for setlang 
-
-// you can get reference number from AppUtils.generateRandomNumber();
-example:-        
-payButton.setTransactionReferenceNumber(AppUtils.generateRandomNumber());
-       
-2 - in order to create transaction call:-
-
-payButton.createTransaction(new PayButton.PaymentTransactionCallback() {
-
-                    @Override
-                    public void onCardTransactionSuccess(SuccessfulCardTransaction cardTransaction) {
-                        paymentStatusTextView.setText(cardTransaction.toString());
-                    }
-
-                    @Override
-                    public void onWalletTransactionSuccess(SuccessfulWalletTransaction walletTransaction) {
-                        paymentStatusTextView.setText(walletTransaction.toString());
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-                        paymentStatusTextView.setText("failed by:- " + error.getMessage());
-                    }
-                });
-
-to create transaction in our sdk you just call createTransaction method and pass to it
-PaymentTransactionCallback listener to call it after transaction.
-this listener has 2 methods:-
-
-  1 - onCardTransactionSuccess method
-      this method called in case transaction success by card payment with SuccessfulCardTransaction object.
-      SuccessfulCardTransaction object from create transaction listener contains:-
-      NetworkReference variable that is reference number of transaction.
-      AuthCode variable
-      ActionCode variable.
-      ReceiptNumber variable.
-      amount variable.
-      
-  2 - onWalletTransactionSuccess method 
-      this method is called if customer make a wallet transaction with SuccessfulWalletTransaction object.
-      SuccessfulWalletTransaction object from create transaction listener contains:-
-      NetworkReference variable that is reference number of transaction.
-      amount variable.
-      
-  3- onError method in case transaction failed with Throwable exception that has error info.
-  
-  
-Example:- 
-
-          payButton.createTransaction(new PayButton.PaymentTransactionCallback() {
-                    @Override
-                    public void onCardTransactionSuccess(SuccessfulCardTransaction cardTransaction) {
-                        paymentStatusTextView.setText(cardTransaction.toString());
-			cardTransaction.NetworkReference; // transaction reference number.
-                    }
-
-                    @Override
-                    public void onWalletTransactionSuccess(SuccessfulWalletTransaction walletTransaction) {
-                        paymentStatusTextView.setText(walletTransaction.toString());
-			walletTransaction.NetworkReference ; // transaction reference number.
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-                        paymentStatusTextView.setText("failed by:- " + error.getMessage());
-                    }
-                });
-            }
-        });
-
-```
-
-### Resolving conflict
-
-Because we use some of libraries like Okhttp, retrofit , EventBus and you may use them with
-different version number , in some cases this will make a conflict in build project to solve this
-problem you should force the library that has conflict with specific version number.
-
-```
-Example conflict in Gson library we use version  
-implementation 'com.google.code.gson:gson:2.8.5'
-and in your build.gradle file
-implementation 'com.google.code.gson:gson:2.8.4'
-in your build.gradle file add in bottom of it:-
-
-configurations.all {
-    resolutionStrategy { 
-        force 'com.google.code.gson:gson:2.8.4'
+    repositories {
+        maven { url 'https://jitpack.io' }
     }
 }
 
-force your specific version and sync project again.
+3. In the app-level `build.gradle` file, under `dependencies {}`, add:
+   implementation 'com.github.MuhammedFares:PaySkySDK:v1.0.1'
+
+Example:
+dependencies {
+    implementation 'com.github.MuhammedFares:PaySkySDK:v1.0.1'
+}
+
+4. Sync your project.
 ```
 
-Reference for how to solve problem
-(https://stackoverflow.com/questions/28444016/how-can-i-force-gradle-to-set-the-same-version-for-two-dependencies)
-(https://stackoverflow.com/questions/28444016/how-can-i-force-gradle-to-set-the-same-version-for-two-dependencies/39292202)
+### Using the SDK
 
-## Deployment
+To use the PaySky SDK, you must first obtain your Merchant ID and Terminal ID from PaySky.
 
-1-Before deploy your project live ,you should get a merchant id and terminal id from our company .
-2-you should keep your merchant id and terminal id secured in your project, encrypt them before save
-them in project.
+1. **Initialize PayButton:**
+
+   Create an instance of `PayButton` and pass the required parameters:
+
+   ```java
+   PayButton payButton = new PayButton(context);
+   
+   payButton.setMerchantId(merchantId); // Merchant ID
+   payButton.setTerminalId(terminalId); // Terminal ID
+   payButton.setAmount(amount); // Payment amount
+   payButton.setCurrencyCode(currencyCode); // Currency code [Optional]
+   payButton.setMerchantSecureHash("Merchant secure hash"); // Merchant secure hash
+   payButton.setTransactionReferenceNumber("reference number"); // Unique transaction reference number
+   payButton.setProductionStatus(PRODUCTION); // Use 'npg' for testing environment
+   payButton.setLang(localLang);  // Set language (e.g., "en" or "ar")
+   ```
+
+2. **Generate Transaction:**
+
+   To initiate the transaction, call `createTransaction`:
+
+   ```java
+   payButton.createTransaction(new PayButton.PaymentTransactionCallback() {
+       @Override
+       public void onCardTransactionSuccess(SuccessfulCardTransaction cardTransaction) {
+           paymentStatusTextView.setText(cardTransaction.toString());
+       }
+
+       @Override
+       public void onWalletTransactionSuccess(SuccessfulWalletTransaction walletTransaction) {
+           paymentStatusTextView.setText(walletTransaction.toString());
+       }
+
+       @Override
+       public void onError(Throwable error) {
+           paymentStatusTextView.setText("Transaction failed: " + error.getMessage());
+       }
+   });
+   ```
+
+   The callback methods include:
+   - **onCardTransactionSuccess**: Called when the transaction is successful via card payment.
+   - **onWalletTransactionSuccess**: Called when the transaction is successful via wallet payment.
+   - **onError**: Called if the transaction fails.
+
+### Resolving Dependency Conflicts
+
+In case of version conflicts with dependencies such as OkHttp, Retrofit, or EventBus, you can force a specific version by adding the following to your `build.gradle` file:
+
+```groovy
+configurations.all {
+    resolutionStrategy {
+        force 'com.google.code.gson:gson:2.8.5'  // Specify the required version
+    }
+}
+```
+
+### Deployment
+
+1. Before deploying your app, ensure you’ve received your Merchant ID and Terminal ID from PaySky.
+2. Always secure your Merchant ID and Terminal ID. Encrypt them before storing in your project.
 
 ## Built With
 
-* [Retrofit](http://square.github.io/retrofit/) - Android Networking library.
-* [EventBus](https://github.com/greenrobot/EventBus) - Event bus send events between your classes.
+- [Retrofit](http://square.github.io/retrofit/) - Networking library for Android.
+- [EventBus](https://github.com/greenrobot/EventBus) - Simplifies communication between components.
 
 ## Authors
-
-**PaySky Company** - (https://www.paysky.io)
-
-## Sample Project
-
-**https://github.com/payskyCompany/NUMO-PayButton-SDK-android/tree/master/app**
-
+** Muhammed Fares ** - @MuhammedFares 
+**PaySky Company** - [PaySky](https://www.paysky.io)
 
