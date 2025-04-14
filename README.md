@@ -40,6 +40,9 @@ allprojects {
 Example:
 dependencies {
     implementation 'com.github.MuhammedFares:PaySkySDK:v1.0.1'
+    //- You Can replace [ v1.0.1 ] with the latest release tag. ex
+   //- implementation 'com.github.MuhammedFares:PaySkySDK:v1.1.2'
+
 }
 
 4. Sync your project.
