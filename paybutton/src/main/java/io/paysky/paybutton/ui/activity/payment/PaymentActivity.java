@@ -37,7 +37,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
     private TextView currencyTextView;
     private TextView amountTextView;
     private TextView merchantNameTextView, tvMerchantText, tvPowerByText, tvAmountText, tvTitle;
-    private ImageView poweredByImageView;
+    //private ImageView poweredByImageView;
 
     public static Bitmap qrBitmap;
     private PaymentData paymentData;
@@ -73,10 +73,63 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
         paymentData.executedTransactionAmount = amount;
         amountTextView.setText(amount);
 
-        if (LocaleHelper.getLocale().equals("en"))
+        if (LocaleHelper.getLocale().equals("en")) {
             currencyTextView.setText(paymentData.currencyName);
-        else
-            currencyTextView.setText("د.ل");
+
+        } else if (LocaleHelper.getLocale().equals("ar")) {
+            switch (paymentData.currencyCode) {
+                case "AED":
+                    currencyTextView.setText("درهم");
+                    break;
+                case "SAR":
+                    currencyTextView.setText("ريال");
+                    break;
+                case "EGP":
+                    currencyTextView.setText("جنيه");
+                    break;
+                case "LYD":
+                    currencyTextView.setText("د.ل");
+                    break;
+                case "IQD":
+                    currencyTextView.setText("دينار عراقي");
+                    break;
+                case "JOD":
+                    currencyTextView.setText("دينار أردني");
+                    break;
+                case "KWD":
+                    currencyTextView.setText("دينار كويتي");
+                    break;
+                case "LBP":
+                    currencyTextView.setText("ليرة لبنانية");
+                    break;
+                case "MAD":
+                    currencyTextView.setText("درهم مغربي");
+                    break;
+                case "OMR":
+                    currencyTextView.setText("ريال عماني");
+                    break;
+                case "QAR":
+                    currencyTextView.setText("ريال قطري");
+                    break;
+                case "SDG":
+                    currencyTextView.setText("جنيه سوداني");
+                    break;
+                case "SYP":
+                    currencyTextView.setText("ليرة سورية");
+                    break;
+                case "TND":
+                    currencyTextView.setText("دينار تونسي");
+                    break;
+                case "YER":
+                    currencyTextView.setText("ريال يمني");
+                    break;
+                default:
+                    currencyTextView.setText(paymentData.currencyName);
+                    break;
+            }
+        } else {
+            currencyTextView.setText(paymentData.currencyName);
+        }
 
         showPaymentBasedOnPaymentOptions(paymentData.paymentMethod);
     }
@@ -99,7 +152,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
         tvPowerByText = findViewById(R.id.tvPowerByText);
         tvMerchantText = findViewById(R.id.tvMerchantText);
         TextView languageTextView = findViewById(R.id.language_textView);
-        poweredByImageView = findViewById(R.id.iv_powered_by);
+       // poweredByImageView = findViewById(R.id.iv_powered_by);
         languageTextView.setOnClickListener(this);
         TextView termsTextView = findViewById(R.id.terms_conditions_textView);
         termsTextView.setOnClickListener(this);
@@ -119,7 +172,8 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
         }
 
         new CountDownTimer(100, 1000) {
-            public void onTick(long millisUntilFinished) {}
+            public void onTick(long millisUntilFinished) {
+            }
 
             public void onFinish() {
                 if (isFirst) {
@@ -214,23 +268,31 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
             TextView manualTextView = cardPaymentLayout.findViewById(R.id.card_payment_textView);
             manualTextView.setTextColor(getResources().getColor(android.R.color.white));
             manualTextView.setText("بطاقة");
-            manualTextView.setCompoundDrawablesWithIntrinsicBounds(LocaleHelper.getLocale().equals("ar") ? 0 : R.drawable.ic_card_white, 0, LocaleHelper.getLocale().equals("ar") ? R.drawable.ic_card_white : 0, 0);
+            manualTextView.setCompoundDrawablesWithIntrinsicBounds(
+                    LocaleHelper.getLocale().equals("ar") ? 0 : R.drawable.ic_card_white, 0,
+                    LocaleHelper.getLocale().equals("ar") ? R.drawable.ic_card_white : 0, 0);
 
             qrPaymentLayout.setBackgroundResource(R.drawable.payment_option_unselected);
             TextView qrTextView = qrPaymentLayout.findViewById(R.id.qr_payment_textView);
             qrTextView.setTextColor(getResources().getColor(R.color.font_gray_color3));
-            qrTextView.setCompoundDrawablesWithIntrinsicBounds(LocaleHelper.getLocale().equals("ar") ? 0 : R.drawable.ic_wallet_gray, 0, LocaleHelper.getLocale().equals("ar") ? R.drawable.ic_wallet_gray : 0, 0);
+            qrTextView.setCompoundDrawablesWithIntrinsicBounds(
+                    LocaleHelper.getLocale().equals("ar") ? 0 : R.drawable.ic_wallet_gray, 0,
+                    LocaleHelper.getLocale().equals("ar") ? R.drawable.ic_wallet_gray : 0, 0);
         } else {
             cardPaymentLayout.setBackgroundResource(R.drawable.payment_option_unselected);
             TextView manualTextView = cardPaymentLayout.findViewById(R.id.card_payment_textView);
             manualTextView.setTextColor(getResources().getColor(R.color.font_gray_color3));
             manualTextView.setText("بطاقة");
-            manualTextView.setCompoundDrawablesWithIntrinsicBounds(LocaleHelper.getLocale().equals("ar") ? 0 : R.drawable.ic_card_black, 0, LocaleHelper.getLocale().equals("ar") ? R.drawable.ic_card_black : 0, 0);
+            manualTextView.setCompoundDrawablesWithIntrinsicBounds(
+                    LocaleHelper.getLocale().equals("ar") ? 0 : R.drawable.ic_card_black, 0,
+                    LocaleHelper.getLocale().equals("ar") ? R.drawable.ic_card_black : 0, 0);
 
             qrPaymentLayout.setBackgroundResource(R.drawable.payment_option_selected);
             TextView qrTextView = qrPaymentLayout.findViewById(R.id.qr_payment_textView);
             qrTextView.setTextColor(getResources().getColor(android.R.color.white));
-            qrTextView.setCompoundDrawablesWithIntrinsicBounds(LocaleHelper.getLocale().equals("ar") ? 0 : R.drawable.ic_wallet_white, 0, LocaleHelper.getLocale().equals("ar") ? R.drawable.ic_wallet_white : 0, 0);
+            qrTextView.setCompoundDrawablesWithIntrinsicBounds(
+                    LocaleHelper.getLocale().equals("ar") ? 0 : R.drawable.ic_wallet_white, 0,
+                    LocaleHelper.getLocale().equals("ar") ? R.drawable.ic_wallet_white : 0, 0);
         }
     }
 

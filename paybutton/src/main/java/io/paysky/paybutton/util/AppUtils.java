@@ -168,7 +168,7 @@ public class AppUtils {
     }
 
     public static int formatPaymentAmountToServer(String payAmount) {
-        return (int) (Double.valueOf(payAmount) * 1000);
+        return (int) (Double.valueOf(payAmount) * 100);
     }
 
     public static String getVersionNumber(Context context) {
@@ -238,7 +238,7 @@ public class AppUtils {
 
 
     public static void preventScreenshot(Activity context) {
-        context.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+//context.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG);
     }
 
 

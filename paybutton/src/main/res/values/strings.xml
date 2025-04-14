@@ -20,7 +20,7 @@
     <string name="enter_valid_owner">Enter valid card holder name</string>
     <string name="invalid_expire_date">Card expiry date should be 4 digits.</string>
     <string name="invalid_ccv">CVC should be 3 digits length.</string>
-    <string name="please_wait">Please wait…</string>
+    <string name="please_wait">Please wait … </string>
     <string name="error_try_again">Error in connection,try again.</string>
     <string name="auth_number">Auth Code:</string>
     <string name="trx_id">Transaction No:</string>
@@ -60,7 +60,7 @@
     <string name="customer_copy__">---Customer copy---</string>
     <string name="merchant_copy">Merchant copy</string>
     <string name="customer_copy">Customer copy</string>
-    <string name="powered_paysky">Powered by PaySky.io</string>
+    <string name="powered_paysky">Powered by PaySky.io -Muhammed Fares</string>
     <string name="qr">Qr Scan</string>
     <string name="failed_load_merchant_data">Authentication failed.</string>
     <string name="cancel">Cancel</string>
