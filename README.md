@@ -111,7 +111,7 @@ configurations.all {
 
 ### Deployment
 
-1. Before deploying your app, ensure you’ve received your Merchant ID and Terminal ID from PaySky.
+1. Before deploying your app, ensure you’ve received your *Merchant ID* , *Terminal ID* and *Secret*  from PaySky.
 2. Always secure your Merchant ID and Terminal ID. Encrypt them before storing in your project.
 
 ## Built With
