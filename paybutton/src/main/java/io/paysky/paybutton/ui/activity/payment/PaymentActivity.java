@@ -37,7 +37,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
     private TextView currencyTextView;
     private TextView amountTextView;
     private TextView merchantNameTextView, tvMerchantText, tvPowerByText, tvAmountText, tvTitle;
-    //private ImageView poweredByImageView;
+    // private ImageView poweredByImageView;
 
     public static Bitmap qrBitmap;
     private PaymentData paymentData;
@@ -71,7 +71,10 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
         merchantNameTextView.setText(paymentData.merchantName);
         String amount = AppUtils.currencyFormat(paymentData.amountFormatted);
         paymentData.executedTransactionAmount = amount;
-        amountTextView.setText(amount);
+        val df = DecimalFormat("#.##"); // #.## means 2 decimal places max
+        val formattedAmount = df.format(amount);
+        amountTextView.setText(formattedAmount);
+        // amountTextView.setText(amount);
 
         if (LocaleHelper.getLocale().equals("en")) {
             currencyTextView.setText(paymentData.currencyName);
@@ -152,7 +155,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
         tvPowerByText = findViewById(R.id.tvPowerByText);
         tvMerchantText = findViewById(R.id.tvMerchantText);
         TextView languageTextView = findViewById(R.id.language_textView);
-       // poweredByImageView = findViewById(R.id.iv_powered_by);
+        // poweredByImageView = findViewById(R.id.iv_powered_by);
         languageTextView.setOnClickListener(this);
         TextView termsTextView = findViewById(R.id.terms_conditions_textView);
         termsTextView.setOnClickListener(this);
