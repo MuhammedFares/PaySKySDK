@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
+import java.text.DecimalFormat;
 
 import io.paysky.paybutton.R;
 import io.paysky.paybutton.data.model.PaymentData;
