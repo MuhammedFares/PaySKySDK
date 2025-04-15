@@ -40,6 +40,9 @@ allprojects {
 Example:
 dependencies {
     implementation 'com.github.MuhammedFares:PaySkySDK:v1.0.1'
+    //- You Can replace [ v1.0.1 ] with the latest release tag. ex
+   //- implementation 'com.github.MuhammedFares:PaySkySDK:v1.1.2'
+
 }
 
 4. Sync your project.
@@ -108,7 +111,7 @@ configurations.all {
 
 ### Deployment
 
-1. Before deploying your app, ensure you’ve received your Merchant ID and Terminal ID from PaySky.
+1. Before deploying your app, ensure you’ve received your *Merchant ID* , *Terminal ID* and *Secret*  from PaySky.
 2. Always secure your Merchant ID and Terminal ID. Encrypt them before storing in your project.
 
 ## Built With
