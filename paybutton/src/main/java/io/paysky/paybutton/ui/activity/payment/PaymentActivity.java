@@ -71,11 +71,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
         AutofitHelper.create(merchantNameTextView);
         merchantNameTextView.setText(paymentData.merchantName);
         String amount = AppUtils.currencyFormat(paymentData.amountFormatted);
-        paymentData.executedTransactionAmount = amount;
-        DecimalFormat df = new DecimalFormat("#.##"); // #.## means 2 decimal places max
-        String formattedAmount = df.format(amount);
-        amountTextView.setText(formattedAmount);
-        // amountTextView.setText(amount);
+        amountTextView.setText(amount);
 
         if (LocaleHelper.getLocale().equals("en")) {
             currencyTextView.setText(paymentData.currencyName);

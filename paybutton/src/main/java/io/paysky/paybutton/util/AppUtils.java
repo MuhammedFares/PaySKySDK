@@ -226,14 +226,13 @@ public class AppUtils {
             double y = Double.parseDouble(amount);
             NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
             DecimalFormat format = (DecimalFormat) nf;
-            format.applyPattern("#,###,##0.000");
+            format.applyPattern("#,###,##0.##"); // <- changed to allow up to 2 decimals only
             return format.format(y);
         } catch (Exception exception) {
-            DecimalFormat formatter = new DecimalFormat("###,###,##0.000");
+            DecimalFormat formatter = new DecimalFormat("###,###,##0.##"); // <- updated fallback too
             formatter.setRoundingMode(RoundingMode.FLOOR);
             return formatter.format(Double.parseDouble(amount));
         }
-
     }
 
 
