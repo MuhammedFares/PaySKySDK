@@ -71,8 +71,8 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
         merchantNameTextView.setText(paymentData.merchantName);
         String amount = AppUtils.currencyFormat(paymentData.amountFormatted);
         paymentData.executedTransactionAmount = amount;
-        val df = DecimalFormat("#.##"); // #.## means 2 decimal places max
-        val formattedAmount = df.format(amount);
+        DecimalFormat df = new DecimalFormat("#.##"); // #.## means 2 decimal places max
+        String formattedAmount = df.format(amount);
         amountTextView.setText(formattedAmount);
         // amountTextView.setText(amount);
 
