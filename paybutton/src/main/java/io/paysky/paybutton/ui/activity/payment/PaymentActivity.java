@@ -77,12 +77,12 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
             currencyTextView.setText(paymentData.currencyName);
 
         } else {
-            switch (paymentData.currencyCode) {
+            switch (paymentData.currencyName) {
                 case "AED":
                     currencyTextView.setText("درهم");
                     break;
                 case "SAR":
-                    currencyTextView.setText("ريال سعودي");
+                    currencyTextView.setText("ريال س");
                     break;
                 case "EGP":
                     currencyTextView.setText("ج م");
