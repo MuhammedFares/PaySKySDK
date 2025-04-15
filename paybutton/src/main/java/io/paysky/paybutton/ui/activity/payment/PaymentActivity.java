@@ -79,16 +79,16 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
         if (LocaleHelper.getLocale().equals("en")) {
             currencyTextView.setText(paymentData.currencyName);
 
-        } else if (LocaleHelper.getLocale().equals("ar")) {
+        } else {
             switch (paymentData.currencyCode) {
                 case "AED":
                     currencyTextView.setText("درهم");
                     break;
                 case "SAR":
-                    currencyTextView.setText("ريال");
+                    currencyTextView.setText("ريال سعودي");
                     break;
                 case "EGP":
-                    currencyTextView.setText("جنيه");
+                    currencyTextView.setText("ج م");
                     break;
                 case "LYD":
                     currencyTextView.setText("د.ل");
@@ -130,10 +130,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
                     currencyTextView.setText(paymentData.currencyName);
                     break;
             }
-        } else {
-            currencyTextView.setText(paymentData.currencyName);
-        }
-
+        } 
         showPaymentBasedOnPaymentOptions(paymentData.paymentMethod);
     }
 
